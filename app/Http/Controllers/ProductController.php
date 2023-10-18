@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -13,6 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $products = DB::table('products')->get(); // Obtener absolutamente todo
+        dd($products);
         return view('products.index');
     }
 
@@ -45,6 +48,10 @@ class ProductController extends Controller
      */
     public function show($product)
     {
+        // $product = DB::table('products')->where('id', $product)->get(); // Este get nos da la coleccion
+        // $product = DB::table('products')->where('id', $product)->first(); // Este first nos devuelve uno
+        $product = DB::table('products')->find($product); // Este no requiere de first ni de where pero si tenemos un product 1 pero no el 2, nos dara null por el dos
+        dd($product);
         return view('products.show');
     }
 
