@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +15,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = DB::table('products')->get(); // Obtener absolutamente todo
-        dd($products);
+        // $products = DB::table('products')->get(); // Obtener absolutamente todo
+        // dd($products);
+        $products = Product::all(); // Eloquent
+        // return $products;
         return view('products.index');
     }
 
@@ -50,8 +53,11 @@ class ProductController extends Controller
     {
         // $product = DB::table('products')->where('id', $product)->get(); // Este get nos da la coleccion
         // $product = DB::table('products')->where('id', $product)->first(); // Este first nos devuelve uno
-        $product = DB::table('products')->find($product); // Este no requiere de first ni de where pero si tenemos un product 1 pero no el 2, nos dara null por el dos
-        dd($product);
+        // $product = DB::table('products')->find($product); // Este no requiere de first ni de where pero si tenemos un product 1 pero no el 2, nos dara null por el dos
+
+        // $product = Product::find($product); // Eloquent, con find me retorna null si el producto no existe
+        $product = Product::findOrFail($product); // Eloquent, si es nulo error 404 no se encontro
+        // dd($product);
         return view('products.show');
     }
 
