@@ -60,7 +60,10 @@ class ProductController extends Controller
             $product = Product::create(request()->all());
         */
         $product = Product::create(request()->all());
-        return $product;
+        // Tres formas de redireccionar a los usuarios
+        // return redirect()->back(); // Volver Atras
+        //return redirect()->action([MainController::class, 'index']); // Asi si funciona
+        return redirect()->route('products.index'); // Esta es la mejor
     }
 
     /**
@@ -109,7 +112,7 @@ class ProductController extends Controller
         // dd('Estas en update');
         $product = Product::findOrFail($product);
         $product->update(request()->all()); // solo se actualizara los atributos en fillable del modelo
-        return $product;
+        return redirect()->route('products.index');
     }
 
     /**
@@ -123,6 +126,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($product);
         $product->delete();
 
-        return $product;
+        // return $product;
+        return redirect()->route('products.index');
     }
 }
