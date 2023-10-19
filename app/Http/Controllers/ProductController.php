@@ -20,7 +20,7 @@ class ProductController extends Controller
         $products = Product::all(); // Eloquent
         // return $products;
         return view('products.index')->with([
-            'products' => $products,
+            'products' => $products, // para vacio colocar []
         ]);
     }
 
