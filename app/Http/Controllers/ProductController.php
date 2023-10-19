@@ -42,6 +42,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        /* Sesiones video 37
+        if(request()->status == 'available' && request()->stock == 0){
+            // session()->put('error', 'No se puede tener disponible si el stock es cero');
+            session()->flash('error', 'No se puede tener disponible si el stock es cero');
+            return redirect()->back();
+        }
+        // session()->forget('error');
+        */
+
         // dd('Estamos en store');
         /* Esto crea la informacion atributo por atributo
             $product = Product::create([
