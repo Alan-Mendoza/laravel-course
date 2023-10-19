@@ -42,7 +42,25 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd('Estamos en store');
+        // dd('Estamos en store');
+        /* Esto crea la informacion atributo por atributo
+            $product = Product::create([
+                'title' => request()->title,
+                'description' => request()->description,
+                'price' => request()->price,
+                'stock' => request()->stock,
+                'status' => request()->status,
+            ]);
+        */
+
+        /*
+            * Esto es importante: agrega toda la informacion incluso el token
+            * Pero como tenemos configurado nuestro modelo fillable solo agarra los del fillable
+
+            $product = Product::create(request()->all());
+        */
+        $product = Product::create(request()->all());
+        return $product;
     }
 
     /**
