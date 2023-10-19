@@ -92,7 +92,9 @@ class ProductController extends Controller
      */
     public function edit($product)
     {
-        return "Showing the form to edit the product whith id {$product}";
+        return view('products.edit')->with([
+            'product' => Product::findOrFail($product),
+        ]);
     }
 
     /**
@@ -104,7 +106,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, $product)
     {
-        //
+        // dd('Estas en update');
+        $product = Product::findOrFail($product);
+        $product->update(request()->all()); // solo se actualizara los atributos en fillable del modelo
+        return $product;
     }
 
     /**
