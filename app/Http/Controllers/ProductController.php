@@ -31,7 +31,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return 'This is the form to create a product';
+        return view('products.create');
     }
 
     /**
@@ -42,7 +42,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd('Estamos en store');
     }
 
     /**
