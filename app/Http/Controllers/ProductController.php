@@ -19,7 +19,9 @@ class ProductController extends Controller
         // dd($products);
         $products = Product::all(); // Eloquent
         // return $products;
-        return view('products.index');
+        return view('products.index')->with([
+            'products' => $products,
+        ]);
     }
 
     /**
@@ -58,7 +60,10 @@ class ProductController extends Controller
         // $product = Product::find($product); // Eloquent, con find me retorna null si el producto no existe
         $product = Product::findOrFail($product); // Eloquent, si es nulo error 404 no se encontro
         // dd($product);
-        return view('products.show');
+        return view('products.show')->with([
+            'product' => $product,
+            // 'html' => "<h2>Hola</h2>",
+        ]);
     }
 
     /**

@@ -7,6 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Prducto número (1)</h1>
+    <h1>{{ $product->title }} ({{ $product->id }})</h1>
+    <p>{{ $product->description }}</p>
+    <p>{{ $product->price }}</p>
+    <p>{{ $product->stock }}</p>
+    <p>{{ $product->status }}</p>
+
+    {{-- {!! $html !!} --}}
+    {{-- @{{ $var }} Antes era util para vue o frameworks frontend apartados--}}
 </body>
 </html>
